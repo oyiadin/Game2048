@@ -9,6 +9,7 @@ public class ChessboardManager : MonoBehaviour
 {
     public GameObject tileBgPrefab;
     public GameObject tilePrefab;
+    public GameObject gameOverPanel;
     
     public int margin = 12;
     public int size = 4;
@@ -53,8 +54,8 @@ public class ChessboardManager : MonoBehaviour
         var position = transform.position;
         var width = ((RectTransform) transform).rect.width;
         _spacing = (width - margin * (size + 1)) / size + margin;
-        _originX = position.x - width / 2 + margin;
-        _originY = position.y + width / 2 - margin;
+        _originX = margin;
+        _originY = width / 2 - margin;
         
         for (int i = 0; i < size; i++)
         {
@@ -280,18 +281,46 @@ public class ChessboardManager : MonoBehaviour
 
     private void ShowGameOverPanel(string type)
     {
+        gameOverPanel.SetActive(true);
+        var text = GameObject.Find("GameOverText").GetComponent<Text>();
+        var btnText = GameObject.Find("GameOverButtonText").GetComponent<Text>();
         if (type == "lose")
         {
-            Debug.Log("lose!!");
+            text.text = "Game Over!";
+            btnText.text = "Try again";
         }
         else if (type == "win")
         {
-            Debug.Log("win!!");
+            text.text = "You win!";
+            btnText.text = "New game";
         }
         else
         {
             Debug.LogError("unknown gameover type!");
         }
+    }
+
+    public void RestartGame()
+    {
+        for (int i = 0; i < size; ++i)
+        {
+            for (int j = 0; j < size; ++j)
+            {
+                if (tiles[i, j] != null)
+                {
+                    Destroy(tiles[i, j]);
+                    tiles[i, j] = null;
+                }
+            }
+        }
+
+        _tilesCount = 0;
+        status = "gaming";
+        playingAnim = false;
+        Score = 0;
+        
+        AddTileRandomly();
+        AddTileRandomly();
     }
 
     private bool CheckIfLose()
