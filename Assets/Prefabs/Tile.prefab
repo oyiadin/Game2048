@@ -89,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a96b9fcc9b40b7a48a38198246ef64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Merged: 0
 --- !u!1 &7349499987950339343
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,4 +168,4 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 2048
+  m_Text: 3333

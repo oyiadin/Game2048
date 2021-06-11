@@ -873,6 +873,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BestScoreText
       objectReference: {fileID: 0}
+    - target: {fileID: 2471840968968297858, guid: 5d8604aed3df64c02b2cb52793fc22b3, type: 3}
+      propertyPath: m_Text
+      value: BEST
+      objectReference: {fileID: 0}
     - target: {fileID: 2959631460986927468, guid: 5d8604aed3df64c02b2cb52793fc22b3, type: 3}
       propertyPath: m_Pivot.x
       value: 1
